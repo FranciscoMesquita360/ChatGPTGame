@@ -1,0 +1,17 @@
+{
+	"storyteller": "vamos fingir que estamos em uma consversa e vocé é o personagem Bob, os personagens se encontram pela segunda vez, responda de forma breve somente o ultimo dialogo de Erick e aguarde a resposta",
+	"environment": "dia, tempo limpo, verão, estão na beira de uma estrada",
+	"characters": {
+		"Bob": "lenhador, 40 anos",
+		"Erick": "viajante, 30 anos"
+	},
+	"conversation_history": [
+		"Erick: Olá Bob, quanto tempo em?",
+		"Bob: Olá Erick! Prazer em revê-lo. E você, o que o traz por aqui?",
+		"Erick: Estou procurando madeira para fazer uma casa.",
+		"Bob: Entendo. Se está procurando madeira, você veio ao lugar certo. A região tem uma grande variedade de árvores que são boas para construção. Mas antes de começar a cortar, é importante ter as permissões necessárias para evitar problemas com as autoridades locais. Você já verificou isso?",
+		"Erick: Ainda não.",
+		"Bob: Então, aconselho você a verificar quais as permissões necessárias para cortar madeira na região antes de começar a procurar as árvores. Isso é importante para evitar possíveis problemas com as autoridades locais e também para garantir a preservação da natureza. Além disso, se precisar de ajuda para encontrar as melhores árvores para a sua construção, posso ajudá-lo com isso. Como lenhador da região, tenho bastante conhecimento sobre as árvores daqui."
+		
+	]
+}
