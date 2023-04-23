@@ -1,0 +1,96 @@
+[gd_scene load_steps=5 format=3 uid="uid://bkya11l3u1lrl"]
+
+[ext_resource type="Script" path="res://src/gui/gui.gd" id="1_ns8le"]
+[ext_resource type="Script" path="res://src/gui/MainChat.gd" id="2_5xt2u"]
+
+[sub_resource type="Theme" id="Theme_wswc2"]
+TextEdit/colors/background_color = Color(0.207843, 1, 0.298039, 0)
+
+[sub_resource type="GDScript" id="GDScript_ktuow"]
+script/source = "extends TextEdit
+
+var log
+var v_scroll_bar:VScrollBar
+signal message_sent
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	log = get_node(\"../Log\")
+	v_scroll_bar = get_v_scroll_bar()
+	v_scroll_bar
+
+
+	
+func _gui_input(event):
+	if event.is_action_released(\"ui_carry_chat\"):
+		if text != \"\\n\":
+			var msg = format_text(text)
+			message_sent.emit(msg)
+		clear()
+
+
+func _on_text_changed():
+	var cursor = get_line_count()-1
+	var last_line = get_line(cursor)
+
+	if len(last_line)>30:
+		text = text+\"\\n\"
+		set_caret_line(cursor+1)
+		v_scroll_bar.value = v_scroll_bar.max_value
+
+func format_text(raw_text:String):
+	raw_text = raw_text.replace(\"\\n\",\" \")
+	return \"[color=#4C4A38]\"+raw_text+\"[/color]\"
+"
+
+[node name="GUI" type="CanvasLayer" groups=["gui"]]
+script = ExtResource("1_ns8le")
+
+[node name="MainChat" type="MarginContainer" parent="." groups=["main_chat"]]
+visible = false
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -365.0
+offset_top = -536.0
+offset_right = -8.0
+offset_bottom = -12.0
+grow_horizontal = 0
+grow_vertical = 0
+script = ExtResource("2_5xt2u")
+
+[node name="ColorRect" type="ColorRect" parent="MainChat"]
+layout_mode = 2
+color = Color(0.686275, 0.678431, 0.862745, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainChat"]
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="Log" type="RichTextLabel" parent="MainChat/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 6.0
+bbcode_enabled = true
+scroll_following = true
+
+[node name="TypeAssit" type="RichTextLabel" parent="MainChat/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+scroll_following = true
+
+[node name="Input" type="TextEdit" parent="MainChat/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+theme = SubResource("Theme_wswc2")
+placeholder_text = "Digite aqui
+"
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+script = SubResource("GDScript_ktuow")
+
+[connection signal="message_sent" from="MainChat/VBoxContainer/Input" to="MainChat" method="_on_input_message_sent"]
+[connection signal="text_changed" from="MainChat/VBoxContainer/Input" to="MainChat/VBoxContainer/Input" method="_on_text_changed"]

@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0kyaejc0gxaf"]
+
+[ext_resource type="Texture2D" uid="uid://cgs48xopcxn4t" path="res://src/world/environments/sprites/parallax-forest.png" id="1_qi2vr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wsdui"]
+size = Vector2(1294, 20)
+
+[node name="Forest" type="Node2D"]
+
+[node name="Backgorund" type="Sprite2D" parent="."]
+position = Vector2(578, 294)
+scale = Vector2(4.17647, 3.65)
+texture = ExtResource("1_qi2vr")
+
+[node name="Ground" type="StaticBody2D" parent="."]
+position = Vector2(101, 592)
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+position = Vector2(534, 5)
+shape = SubResource("RectangleShape2D_wsdui")

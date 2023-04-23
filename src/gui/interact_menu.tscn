@@ -1,0 +1,137 @@
+[gd_scene load_steps=3 format=3 uid="uid://3a7ykc8iooor"]
+
+[ext_resource type="Script" path="res://src/gui/type_assit.gd" id="1_slhl0"]
+
+[sub_resource type="GDScript" id="GDScript_6q6qk"]
+script/source = "extends MarginContainer
+
+
+var answer_format =  [\"Resposta A\",\"Resposta B\",\"Resposta C\"]
+var api:APIChatGPT
+
+
+signal button_down
+
+var character_name
+var button_option_a
+var button_option_b
+var button_option_c
+var option_a
+func _enter_tree():
+	character_name = $VBoxContainer/Label
+	button_option_a = $VBoxContainer/TypeAssit/ButtonOptionA
+	button_option_b = $VBoxContainer/TypeAssit/ButtonOptionB
+	button_option_c = $VBoxContainer/TypeAssit/ButtonOptionC
+	option_a = $VBoxContainer/TypeAssit/OptionA
+	api =  APIChatGPT.new()
+	add_child(api)
+	api.connect_api()
+	api.set_custom_headers_value(\"Content-Type: application/json\")
+	api.set_custom_headers_value(\"Authorization: Bearer \"+api.api_key)
+	api.connect(\"response_received\",Callable(self,\"_on_api_response_received\"))
+
+func _on_api_response_received(response):
+	var response_dic = JSON.parse_string(response)
+	if not response_dic.has(\"error\"):
+		var content = response_dic.get(\"choices\")[0].get(\"message\").get(\"content\")
+		
+		var content_dic = JSON.parse_string(content)
+		var values = content_dic.values()
+		
+		button_option_a.text = values[0][0]
+		button_option_b.text = values[0][1]
+		button_option_c.text = values[0][2]
+	else:
+		print(\"Error\")
+
+func generate_possible_answers(sender,conversation):
+	var conversation_str = \"considere a seguite conversa: \"+JSON.stringify(conversation)+\", agora liste 3 respostas possiveis para \"+sender+\" no seguinte formato\"+JSON.stringify({sender:answer_format})
+	api.send_message(conversation_str)
+	
+	
+	
+	
+	
+	
+	
+func _on_button_talk_button_down():
+	button_down.emit(\"talk\")
+
+func _on_button_option_a_button_down():
+	button_down.emit(button_option_a.text)
+	pass # Replace with function body.
+
+
+func _on_button_option_b_button_down():
+	button_down.emit(button_option_b.text)
+	pass # Replace with function body.
+
+
+func _on_button_option_c_button_down():
+	button_down.emit(button_option_c.text)
+	pass # Replace with function body.
+
+
+func _on_option_a_gui_input(event):
+	if event is InputEventMouseButton:
+		if event.is_action_released(\"ui_click\"):
+			print(event)
+			pass
+	pass # Replace with function body.
+"
+
+[node name="InteractMenu" type="MarginContainer"]
+anchors_preset = -1
+anchor_right = 0.041
+anchor_bottom = 0.094
+offset_right = -0.232002
+offset_bottom = 0.0879974
+pivot_offset = Vector2(23, 61)
+script = SubResource("GDScript_6q6qk")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+modulate = Color(0.588235, 0.898039, 0, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Name"
+
+[node name="TypeAssit" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("1_slhl0")
+
+[node name="ButtonOptionA" type="Button" parent="VBoxContainer/TypeAssit"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Ola!"
+
+[node name="ButtonOptionB" type="Button" parent="VBoxContainer/TypeAssit"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "O que esta Fazendo?"
+
+[node name="ButtonOptionC" type="Button" parent="VBoxContainer/TypeAssit"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Qual seu nome?"
+
+[node name="OptionA" type="Label" parent="VBoxContainer/TypeAssit"]
+visible = false
+layout_mode = 2
+text = "Qual seu Nome?"
+visible_characters = 11
+visible_ratio = 1.22222
+
+[node name="ButtonTalk" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "To type"
+
+[connection signal="button_down" from="VBoxContainer/TypeAssit/ButtonOptionA" to="." method="_on_button_option_a_button_down"]
+[connection signal="button_down" from="VBoxContainer/TypeAssit/ButtonOptionB" to="." method="_on_button_option_b_button_down"]
+[connection signal="button_down" from="VBoxContainer/TypeAssit/ButtonOptionC" to="." method="_on_button_option_c_button_down"]
+[connection signal="gui_input" from="VBoxContainer/TypeAssit/OptionA" to="." method="_on_option_a_gui_input"]
+[connection signal="button_down" from="VBoxContainer/ButtonTalk" to="." method="_on_button_talk_button_down"]

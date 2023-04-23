@@ -1,0 +1,17 @@
+{
+	"name":"Erick",
+	"chat": {
+		"storyteller": "",
+		"environment": "",
+		"name": "Erick",
+		"description": "player",
+		"secrets": [
+		],
+		"conversation_history": {
+
+		},
+		"current_conversation": {
+
+		}
+	}
+}

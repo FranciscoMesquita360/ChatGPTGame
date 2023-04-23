@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://uc1g0xsshdrb"]
+
+[ext_resource type="Script" path="res://src/world/world.gd" id="1_iekgv"]
+[ext_resource type="PackedScene" uid="uid://c0kyaejc0gxaf" path="res://src/world/environments/forest.tscn" id="2_g3242"]
+[ext_resource type="PackedScene" uid="uid://bkya11l3u1lrl" path="res://src/gui/gui.tscn" id="3_xo8po"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_iekgv")
+
+[node name="Forest" parent="." instance=ExtResource("2_g3242")]
+position = Vector2(-13, 54)
+scale = Vector2(1.01516, 1.01447)
+
+[node name="GUI" parent="." instance=ExtResource("3_xo8po")]
