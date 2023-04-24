@@ -1,0 +1,40 @@
+{
+	"name": "Galahad",
+	"chat": {
+		"storyteller": "A história se passa em um mundo medieval fictício, onde a magia e a espada se unem em aventuras épicas.",
+		"environment": "A noite está escura e chuvosa. Galahad está no topo de uma colina, olhando para a cidade abaixo.",
+		"name": "Galahad",
+		"description": "Galahad é um jovem cavaleiro em busca de aventuras e honra. Ele é muito habilidoso com a espada e sempre está disposto a ajudar aqueles que precisam.",
+		"comments": [
+			"Galahad parece ser um personagem interessante e bem desenvolvido.",
+			"Estou curioso para saber quais serão as aventuras que ele irá enfrentar.",
+			"A descrição do ambiente está muito bem feita, consigo visualizar tudo em minha mente."
+		],
+		"conversation_history": {
+			"Merlin": [
+				"Merlin: Olá, jovem Galahad.",
+				"Galahad: Olá, grande Merlin. O que o traz por aqui?",
+				"Merlin: Vim lhe entregar uma missão muito importante. Você está disposto a aceitá-la?",
+				"Galahad: Claro! Estou sempre pronto para uma boa aventura."
+			],
+			"Princesa Isadora": [
+				"Princesa Isadora: Galahad, meu herói! O que você tem feito ultimamente?",
+				"Galahad: Princesa, estou sempre em busca de novas aventuras e desafios para provar minha coragem.",
+				"Princesa Isadora: Você é realmente um valente cavaleiro. Conte-me mais sobre suas últimas aventuras."
+			]
+		},
+		"current_conversation": {},
+		"quests": [
+			{
+				"name": "Encontre o portador da Espada Sagrada",
+				"description": "Ajude Merlin a encontrar o portador da Espada Sagrada, aquele destinado a derrotar o mal que ameaça o reino.",
+				"reward": "A gratidão de Merlin e a chance de fazer parte de uma jornada épica."
+			},
+			{
+				"name": "Recrute os melhores guerreiros do reino",
+				"description": "Apoie Merlin na tarefa de convocar os melhores guerreiros do reino para enfrentar as forças do mal.",
+				"reward": "A honra de lutar ao lado dos melhores guerreiros e a oportunidade de salvar o reino."
+			}
+		]
+	}
+}

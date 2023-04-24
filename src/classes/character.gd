@@ -6,6 +6,7 @@ var colision
 var sprite
 var enable_motion = false
 var gui
+var speech_bubble
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
@@ -36,28 +37,29 @@ func _enter_tree():
 	gui = get_tree().get_nodes_in_group("gui")[0]
 	interact_menu = preload("res://src/gui/interact_menu.tscn").instantiate()
 	interact_menu.connect("button_down",Callable(self,"_interact_menu_button_down"))
+	interact_menu.parent = self
 	add_child(interact_menu)
 	interact_menu.position = Vector2(0,0)
 	interact_menu.position.y -= (10+interact_menu.size.y+shape.size.y/2)
-	
 	interact_menu.position.x -= (interact_menu.size.x/2)
-	prints(position,interact_menu.position)
 	interact_menu.character_name.text = data_json.data.name
-	chat.connect("response_received",Callable(self,"response_received"))
 	
+	
+	chat.connect("response_received",Callable(self,"response_received"))
+	chat.connect("finished_conversation",Callable(self,"finished_conversation"))
+
+func finished_conversation(sender):
+	save()
+	pass
+
 func response_received(content):
-	interact_menu.character_name.text = content 
-	var current_conversation = chat.current_conversation.get(gui.main_chat.sender,null)
-	if current_conversation != null:
-		interact_menu.generate_possible_answers(gui.main_chat.sender,current_conversation)
+	pass
 	
 func _interact_menu_button_down(button):
-	
 	if button == "talk":
 		gui.main_chat.connect_chat(chat)
 		interact_menu.visible = false
-	else:
-		chat.send_message(gui.main_chat.sender,button)
+
 
 
 func _input_event(viewport, event, shape_idx):
@@ -81,6 +83,6 @@ func _physics_process(delta):
 
 
 func save():
-	ResourceSaver.save(data_json,"res://src/data/characters/save/"+data_json.resource_name)
+	ResourceSaver.save(data_json,"res://src/data/characters/save/"+ data_json.data.name+".json")
 	
 	

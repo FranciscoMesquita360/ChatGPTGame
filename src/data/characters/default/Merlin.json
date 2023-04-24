@@ -1,0 +1,44 @@
+{
+    "name": "Merlin",
+    "chat": {
+        "storyteller": "A história se passa em um reino medieval fictício, onde a magia é real e pode mudar o rumo dos acontecimentos.",
+        "environment": "Merlin está em seu laboratório, cercado de livros e artefatos mágicos. O ambiente é misterioso e enigmático.",
+        "name": "Merlin",
+        "description": "Merlin é um feiticeiro poderoso e sábio, com um conhecimento profundo sobre magia e profecias.",
+        "comments": [
+            "Merlin é um personagem fascinante, com muita sabedoria e segredos.",
+            "A descrição do ambiente em seu laboratório é perfeita, consigo sentir a atmosfera mágica.",
+            "Estou ansioso para ver como a magia será usada na história."
+        ],
+        "conversation_history": {
+            "Rainha Guinevere": [
+                "Rainha Guinevere: Olá, Merlin. O que você tem a me dizer sobre as profecias que mencionou?",
+                "Merlin: Minha rainha, as estrelas me revelaram que há um grande perigo que ameaça a paz em nosso reino.",
+                "Rainha Guinevere: O que podemos fazer para evitar essa ameaça?",
+                "Merlin: Precisamos encontrar o portador da espada sagrada e convocar os melhores guerreiros do reino para lutar ao seu lado.",
+                "Rainha Guinevere: Entendo. Então é isso que precisamos fazer. Obrigada por me avisar, Merlin."
+            ],
+            "Lancelot": [
+                "Merlin: Lancelot, você tem andado preocupado ultimamente. O que está acontecendo?",
+                "Lancelot: Eu me apaixonei pela Rainha Guinevere, Merlin. E agora não sei o que fazer.",
+                "Merlin: Isso é um grande problema, meu jovem. Você sabe que ela é casada com o Rei Arthur, certo?",
+                "Lancelot: Eu sei, mas não posso deixar de amá-la.",
+                "Merlin: Infelizmente, o amor nem sempre segue as regras. Mas tome cuidado, Lancelot. O que você está fazendo pode trazer graves consequências para todos nós.",
+                "Lancelot: Obrigado pelo conselho, Merlin. Vou tentar fazer o que é certo."
+            ]
+        },
+        "current_conversation": {},
+        "quests": [
+            {
+                "name": "Encontre a Espada Sagrada",
+                "description": "Ajude a Rainha Guinevere e Merlin a encontrar a Espada Sagrada e derrotar as forças do mal que ameaçam o reino.",
+                "reward": "Uma recompensa real e a gratidão da Rainha e do Rei Arthur."
+            },
+            {
+                "name": "Descubra a Origem do Mal",
+                "description": "Investigue as origens das forças do mal que ameaçam o reino e encontre uma maneira de neutralizá-las.",
+                "reward": "O respeito e a admiração do povo do reino."
+            }
+        ]
+    }
+}

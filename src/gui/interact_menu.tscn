@@ -11,7 +11,7 @@ var api:APIChatGPT
 
 
 signal button_down
-
+var parent
 var character_name
 var button_option_a
 var button_option_b
@@ -29,7 +29,7 @@ func _enter_tree():
 	api.set_custom_headers_value(\"Content-Type: application/json\")
 	api.set_custom_headers_value(\"Authorization: Bearer \"+api.api_key)
 	api.connect(\"response_received\",Callable(self,\"_on_api_response_received\"))
-
+	
 func _on_api_response_received(response):
 	var response_dic = JSON.parse_string(response)
 	if not response_dic.has(\"error\"):
@@ -41,17 +41,21 @@ func _on_api_response_received(response):
 		button_option_a.text = values[0][0]
 		button_option_b.text = values[0][1]
 		button_option_c.text = values[0][2]
+		recenter()
 	else:
 		print(\"Error\")
 
 func generate_possible_answers(sender,conversation):
-	var conversation_str = \"considere a seguite conversa: \"+JSON.stringify(conversation)+\", agora liste 3 respostas possiveis para \"+sender+\" no seguinte formato\"+JSON.stringify({sender:answer_format})
+	var conversation_str = \"considere a seguite conversa: \"+JSON.stringify(conversation)+\", agora liste 3 respostas curtas possiveis para \"+sender+\" no seguinte formato\"+JSON.stringify({sender:answer_format})
 	api.send_message(conversation_str)
 	
 	
 	
 	
-	
+func recenter():
+	position = Vector2(0,0)
+	position.y -= (10+size.y+parent.shape.size.y/2)
+	position.x -= (size.x/2)
 	
 	
 func _on_button_talk_button_down():
@@ -81,6 +85,7 @@ func _on_option_a_gui_input(event):
 "
 
 [node name="InteractMenu" type="MarginContainer"]
+visible = false
 anchors_preset = -1
 anchor_right = 0.041
 anchor_bottom = 0.094
@@ -99,6 +104,7 @@ size_flags_horizontal = 4
 text = "Name"
 
 [node name="TypeAssit" type="HBoxContainer" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("1_slhl0")
@@ -122,15 +128,12 @@ text = "Qual seu nome?"
 visible = false
 layout_mode = 2
 text = "Qual seu Nome?"
-visible_characters = 11
-visible_ratio = 1.22222
 
 [node name="ButtonTalk" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 text = "To type"
 
-[connection signal="button_down" from="VBoxContainer/TypeAssit/ButtonOptionA" to="." method="_on_button_option_a_button_down"]
 [connection signal="button_down" from="VBoxContainer/TypeAssit/ButtonOptionB" to="." method="_on_button_option_b_button_down"]
 [connection signal="button_down" from="VBoxContainer/TypeAssit/ButtonOptionC" to="." method="_on_button_option_c_button_down"]
 [connection signal="gui_input" from="VBoxContainer/TypeAssit/OptionA" to="." method="_on_option_a_gui_input"]
