@@ -10,7 +10,7 @@ var request
 var result
 var message_result:String
 signal response_received
-func _init(_model:String= "gpt-3.5-turbo",_url:String = "https://api.openai.com/v1/chat/completions",_api_key:String = "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", _temperature:float = 0.7):
+func _init(_model:String= "gpt-3.5-turbo",_url:String = "https://api.openai.com/v1/chat/completions",_api_key:String = "your_api_key", _temperature:float = 0.7):
 	model = _model
 	url = _url
 	api_key =_api_key
