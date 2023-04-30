@@ -1,6 +1,6 @@
 # ChatGPTGame
 
-Este é um jogo que utiliza o modelo ChatGPT 3.5 para interpretar alguns personagens. É uma Prova de Conceito (POC). 
+Este é um jogo que utiliza o modelo ChatGPT 3.5 para interpretar alguns personagens. É uma Prova de Conceito (POC). O Vídeo de teste pode ser visto [aqui](https://youtu.be/sbVHW4yIRbo)
 
 ## Como funciona
 Primeiro algumas premissas iniciais são concatenadas com a estrutura do chat do personagem, e então enviadas via API:
