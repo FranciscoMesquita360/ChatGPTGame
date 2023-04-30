@@ -23,11 +23,14 @@
 				"Princesa Isadora: Você é realmente um valente cavaleiro. Conte-me mais sobre suas últimas aventuras."
 			],
 			"Erick": [
-				"Erick: O que esta Fazendo?",
-				"Galahad: Estou apenas observando a cidade lá embaixo, Erick. Mas se precisar de ajuda em alguma tarefa, pode contar comigo. Sou um cavaleiro sempre pronto para ajudar.",
-				"Erick: Tchau!",
 				"Erick: Ola!",
-				"Galahad: Obrigado pelos elogios, fico feliz que esteja gostando da história. Estou ansioso para ver o que o destino me reserva nas próximas aventuras.",
+				"Galahad: Olá, Erick! Como posso ajudá-lo?",
+				"Erick: estou procurando aventuras ",
+				"Galahad: Então você está procurando aventuras, Erick? Bem, eu sou um cavaleiro sempre em busca de uma boa jornada. Talvez possamos encontrar algo juntos.",
+				"Erick: Que legal, o que você sugere?",
+				"Galahad: Bem, Erick, temos algumas opções. Podemos ajudar Merlin a encontrar o portador da Espada Sagrada ou recrutar os melhores guerreiros do reino para enfrentar as forças do mal. Qual dessas missões chama mais sua atenção?",
+				"Erick: podemos ajudar o Merlin ",
+				"Galahad: Que bom que quer se aventurar conosco, Erick! Então vamos ajudar Merlin a encontrar o portador da Espada Sagrada, temos que derrotar o mal que ameaça o reino. Vamos em frente!",
 				"Erick: Tchau!"
 			]
 		},

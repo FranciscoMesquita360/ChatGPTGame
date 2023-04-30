@@ -58,7 +58,7 @@ func response_received(content):
 func _interact_menu_button_down(button):
 	if button == "talk":
 		gui.main_chat.connect_chat(chat)
-		interact_menu.visible = false
+		#interact_menu.visible = false
 
 
 
